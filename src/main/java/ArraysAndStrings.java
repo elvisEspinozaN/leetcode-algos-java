@@ -63,4 +63,30 @@ public class ArraysAndStrings {
         return answer;
     }
 
+    /* Check if Palindrome
+
+    Example 1 :  Return true if a given string is a palindrom, false otherwise.
+    That means, after reversing it, it is still the same string.
+    For example: "abcdcba", or "racecar".
+     */
+
+    public boolean checkIfPalindrome(String s) {
+        // simple two pointer approach, check to see if each
+        // character equals one another
+
+        int left = 0;
+        int right = s.length() - 1;
+
+        while(left < right) {
+            if(s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+
+            right--;
+            left++;
+        }
+
+        return true;
+    }
+
 }
