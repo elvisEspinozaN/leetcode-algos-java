@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArraysAndStrings {
 
 
@@ -120,6 +123,40 @@ public class ArraysAndStrings {
         }
 
         return false;
+    }
+
+    /* Example 1: Given two sorted integer arrays, return an array that combines
+    both of them and is also sorted.
+     */
+
+    public List<Integer> combine(int[] arr1, int[] arr2) {
+        List<Integer> answer = new ArrayList<Integer>();
+
+        int one = 0, two = 0; // we can run through both arrays
+
+        while(one < arr1.length && two < arr2.length) {
+
+            if(arr1[one] > arr2[two]) {
+                answer.add(arr2[two]); // add the lowest number of the compared integers
+                two++;
+            } else {
+                answer.add(arr1[one]);
+                one++;
+            }
+
+            // finish adding in the remaining numbers
+            while(one < arr1.length) {
+                answer.add(arr1[one]);
+                one++;
+            }
+
+            while(two < arr2.length) {
+                answer.add(arr2[two]);
+                two++;
+            }
+        }
+
+        return answer;
     }
 
 }
