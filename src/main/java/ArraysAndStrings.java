@@ -183,4 +183,33 @@ public class ArraysAndStrings {
         return i == s.length();
     }
 
+    /* Maximum Average Subarray I
+
+    You are given an integer array nums consisting of n elements, and an integer k.
+
+    Find a contiguous subarray whose length is equal to k that has the maximum average value
+    and return this value.
+     */
+
+    public double findMaxAverage(int[] nums, int k) {
+        // use sliding window technique, have a window of the length of k
+        // evaluate the elements to find the answer needed
+
+        double current = 0;
+
+        for(int i = 0; i < k; i++) {
+            current += nums[i];
+        }
+
+        double answer = current;
+
+        for(int i = k; i < nums.length; i++) {
+            current += nums[i] - nums[i - k]; // decrease window by its beginning point;
+            answer = Math.max(current, answer);
+        }
+
+        return answer / k;
+
+    }
+
 }
