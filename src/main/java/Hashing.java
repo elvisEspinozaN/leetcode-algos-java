@@ -70,4 +70,23 @@ public class Hashing {
         return answer;
     }
 
+    /* Check if the Sentence Is Pangram
+
+    A pangram is a sentence where every letter of the English alphabet appears at least once.
+
+    Given a string sentence containing only lowercase English letters,
+    return true if sentence is a pangram, or false otherwise.
+     */
+
+    public boolean checkIfPangram(String s) {
+
+        Set<Character> hs = new HashSet<>();
+
+        for(char c : s.toCharArray()) { // as long as all characters appear
+            hs.add(c);
+        }
+
+        return hs.size() == 26; // size adds up to 26
+    }
+
 }
