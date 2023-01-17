@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Hashing {
 
@@ -25,6 +27,28 @@ public class Hashing {
         }
 
         return new int[] {-1, -1};
+    }
+
+    /* Example 2351 : First Letter to Appear Twice
+
+    Given a string s, return the first character to appear twice. It is guaranteed that
+    the input will have a duplicate character.
+     */
+
+    public char repeatedCharacter(String s) {
+
+        Set<Character> hs = new HashSet<>();
+
+        for(int i = 0; i < s.length(); i++) {
+
+            if(hs.contains(s.charAt(i))) {
+                return s.charAt(i);
+            }
+            hs.add(s.charAt(i));
+        }
+
+        return ' ';
+
     }
 
 }
