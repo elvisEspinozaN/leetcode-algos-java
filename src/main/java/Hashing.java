@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Hashing {
 
@@ -49,6 +46,28 @@ public class Hashing {
 
         return ' ';
 
+    }
+
+    /* Example 1: Given an integer array nums,
+    find all the numbers x that satisfy the following: x + 1 is not in nums, and x - 1 is not in nums.
+
+     */
+
+    public List<Integer> findNumbers(int[] nums) {
+        List<Integer> answer = new ArrayList<>();
+        Set<Integer> hs = new HashSet<>();
+
+        for(int n : nums) {
+            hs.add(n);
+        }
+
+        for(int i : nums) {
+            if(!hs.contains(i + 1) && !hs.contains(i - 1)) {
+                answer.add(i);
+            }
+        }
+
+        return answer;
     }
 
 }
