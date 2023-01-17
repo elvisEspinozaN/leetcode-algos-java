@@ -181,4 +181,34 @@ public class Hashing {
         return answer;
     }
 
+    /* Example 2: 2248. Intersection of Multiple Arrays
+
+    Given a 2D array nums that contains n arrays of distinct integers, return a sorted
+    array containing all the numbers that appear in all n arrays.
+
+    For example, given nums = [[3,1,2,4,5],[1,2,3,4],[3,4,5,6]], return [3, 4]. 3 and 4 are the
+    only numbers that are in all arrays.
+     */
+
+    public List<Integer> intersection(int[][] nums) {
+        List<Integer> answer = new ArrayList<Integer>();
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int[] arr : nums) { // handles key, value for every appearance
+            for(int i : arr) {
+                map.put(i, map.getOrDefault(i, 0) + 1);
+            }
+        }
+
+        for(int key : map.keySet()) {
+            if(map.get(key) == n) { // equals the length of arrays :: appears in every single array
+                answer.add(key);
+            }
+        }
+
+        Collections.sort(answer);
+        return answer;
+    }
+
 }
