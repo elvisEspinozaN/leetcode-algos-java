@@ -117,4 +117,29 @@ public class Hashing {
 
         return -1;
     }
+
+    /* Counting Elements
+
+    Given an integer array arr, count how many elements x there are,
+    such that x + 1 is also in arr. If there are duplicates in arr, count them separately.
+     */
+
+    public int countElements(int[] arr) {
+
+        Set<Integer> hs = new HashSet<>();
+        int answer = 0;
+
+        for(int i : arr) {
+            hs.add(i);
+        }
+
+        for(int i = 0; i < arr.length; i++) {
+            if(hs.contains(arr[i] + 1)) {
+                answer++;
+            }
+        }
+
+        return answer;
+    }
+
 }
