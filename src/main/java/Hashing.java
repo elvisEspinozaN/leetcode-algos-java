@@ -142,4 +142,43 @@ public class Hashing {
         return answer;
     }
 
+    /* Example 1: You are given a string s and an integer k. Find the length of the
+    longest substring that contains at most k distinct characters.
+
+    For example, given s = "eceba" and k = 2, return 3. The longest substring with at
+    most 2 distinct characters is "ece".
+     */
+
+    public int findLongestSubstring(String s, int k) {
+        // sliding window technique
+        Map<Character, Integer> counts = new HashMap<>();
+        int left = 0, answer = 0;
+
+        for(int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            // default is 0, if found add the value of appearances
+            counts.put(c, counts.getOrDefault(c, 0) + 1);
+
+            while(counts.size() > k) { // constraint
+                char remove = s.charAt(left);
+                // at an attempt to contract window
+                // remove the amount of appearances
+                counts.put(remove, counts.getOrDefault(remove, 0) - 1);
+
+                // no longer appears, remove then letter from the map
+                if(counts.get(remove) == 0) {
+                    counts.remove(remove);
+                }
+
+                // contract window
+                left++;
+            }
+
+            // importnat formula to get the size of substring!!!!!
+            answer = Math.max(answer, right - left + 1);
+        }
+
+        return answer;
+    }
+
 }
